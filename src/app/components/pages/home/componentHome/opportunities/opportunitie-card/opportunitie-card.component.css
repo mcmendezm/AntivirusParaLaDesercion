@@ -1,0 +1,31 @@
+.opportunitie-card {
+  background-color: var(--bg-card-color, white); /* Ajusta este valor según el tema */
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 16rem;
+}
+
+.opportunitie-card:hover {
+  transform: scale(1.05);
+}
+
+.opportunitie-card__image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.opportunitie-card__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.opportunitie-card__description {
+  color: var(--text-card-foreground-color, #333); /* Ajusta según tu tema */
+  text-align: left;
+}

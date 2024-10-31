@@ -1,0 +1,38 @@
+<section id="service" class="py-20 w-full dark:bg-[#0f1629]">
+  <h2 class="text-3xl text-[#32526E] text-center mb-5 dark:text-[#12a6e8]">{{ 'services.heading' | transloco }}</h2>
+  <div class="flex justify-center flex-wrap">
+    <div class="justify-center max-w-screen-lg mx-auto grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+      
+      <app-services-card
+        class="bg-muted shadow-lg rounded-lg overflow-hidden m-5 transform transition-transform hover:scale-105 w-72 text-justify dark:bg-[#0f1629]"
+        link="/register"
+        imageSrc="assets/images/imagen 1.png"
+        imageAlt="{{ 'services.cards.proVocacion.title' | transloco }}"
+        [title]="'services.cards.proVocacion.title' | transloco"
+        [description]="'services.cards.proVocacion.description' | transloco"
+        [buttonText]="'services.cards.proVocacion.buttonText' | transloco">
+      </app-services-card>
+
+      <app-services-card
+        link="/register"
+        class="bg-muted shadow-lg rounded-lg overflow-hidden m-5 transform transition-transform hover:scale-105 w-72 text-justify dark:bg-[#0f1629]"
+        imageSrc="assets/images/imagen 2.png"
+        imageAlt="{{ 'services.cards.asesoriaSociopedagogica.title' | transloco }}"
+        [title]="'services.cards.asesoriaSociopedagogica.title' | transloco"
+        [description]="'services.cards.asesoriaSociopedagogica.description' | transloco"
+        [buttonText]="'services.cards.asesoriaSociopedagogica.buttonText' | transloco">
+      </app-services-card>
+
+      <app-services-card
+        link="/register"
+        class="bg-muted shadow-lg rounded-lg overflow-hidden m-5 transform transition-transform hover:scale-105 w-72 text-justify dark:bg-[#0f1629]"
+        imageSrc="assets/images/imagen 3.png"
+        imageAlt="{{ 'services.cards.testSociovocacional.title' | transloco }}"
+        [title]="'services.cards.testSociovocacional.title' | transloco"
+        [description]="'services.cards.testSociovocacional.description' | transloco"
+        [buttonText]="'services.cards.testSociovocacional.buttonText' | transloco">
+      </app-services-card>
+
+    </div>
+  </div>
+</section>

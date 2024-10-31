@@ -1,0 +1,175 @@
+{
+  "navbar": {
+    "services": "Services",
+    "opportunities": "Opportunities",
+    "aboutUs": "About Us",
+    "news": "News",
+    "register": "Register",
+    "login": "Login",
+    "search": "Search",
+    "send": "Send"
+  },
+  "header": {
+    "title": "Your future starts here!",
+    "description": "At the Antivirus Foundation for Dropout Prevention, we believe that everyone deserves access to the best opportunities. That's why we offer a personalized platform where you can explore scholarships, courses, and programs tailored to your interests and needs.",
+    "contactUs": "Contact Us",
+    "learnAboutUs": "Learn About Us"
+},
+  "opportunities": {
+    "heading": "Discover these unique opportunities!",
+    "cards": {
+      "nodoEafit": {
+        "title": "Nodo Eafit",
+        "description": "Participate in training programs and workshops at EAFIT University in the field of technology to enhance your skills and knowledge. Sign up today!"
+      },
+      "velezReyes": {
+        "title": "VélezReyes+ Scholarships",
+        "description": "They offer financial support to outstanding students. Apply for your scholarship and achieve your educational goals."
+      },
+      "comfama": {
+        "title": "Comfama",
+        "description": "Access educational and recreational programs with Comfama. Find the perfect opportunity for your personal and professional growth."
+      }
+    }
+},
+  "services": {
+    "heading": "Services",
+    "cards": {
+      "proVocacion": {
+        "title": "Pro-Vocation",
+        "description": "Discover your true vocation through our Pro-Vocation program. We help you identify your strengths and explore the best educational and professional options. Take the first step towards your future today!",
+        "buttonText": "I WANT IT"
+      },
+      "asesoriaSociopedagogica": {
+        "title": "Sociopedagogical Counseling",
+        "description": "Receive personalized guidance to overcome educational challenges. Our sociopedagogical counseling offers tools and strategies to improve your academic performance and personal well-being.",
+        "buttonText": "I WANT IT"
+      },
+      "testSociovocacional": {
+        "title": "Sociovocational Test",
+        "description": "Not sure which career is best for you? Our Sociovocational Test will guide you in choosing a career based on your interests, skills, and personal values. Discover your ideal path!",
+        "buttonText": "I WANT IT"
+      }
+    }
+  },
+  "footer": {
+    "contactUs": "Want to know more about us?",
+    "callToAction": "Contact us today.",
+    "bankOfOpportunities": "Bank of Opportunities",
+    "rightsReserved": "ANTIVIRUS FOUNDATION © 2024 - All Rights Reserved"
+  },
+  "button": {
+    "donate": "Donate ❤️"
+    },
+      "login": {
+    "welcome": "Welcome to your",
+    "bankOfOpportunities": "Opportunity Bank",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@gmail.com",
+    "passwordLabel": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot my password",
+    "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "register": "Sign Up"
+  },
+   "register": {
+    "heading": "Ready to find your next opportunity?",
+    "loginWithGoogle": "Sign in with Google",
+    "loginWithFacebook": "Sign in with Facebook",
+    "nameLabel": "First Name",
+    "surnameLabel": "Last Name",
+    "birthdateLabel": "Birthdate",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@gmail.com",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "createAccountButton": "Create Account"
+  },
+    "benefits": {
+    "heading": "Get the following benefits!",
+    "items": {
+      "profileCreation": {
+        "title": "Registration and creation of personal profile",
+        "description": "Create your personal profile to highlight your achievements, skills, and aspirations. This will allow you to have a personalized presence within our community, making it easier to access opportunities that are right for you."
+      },
+      "saveOpportunities": {
+        "title": "Save opportunities",
+        "description": "Find and save relevant opportunities that align with your interests and academic goals. This way, you can easily access them in the future and not miss any important offers."
+      },
+      "personalizedRecommendations": {
+        "title": "Personalized recommendations",
+        "description": "Receive specific suggestions tailored to your needs and profile. Our intelligent system will analyze your interests and provide you with recommendations that will help you make the most of the available opportunities."
+      },
+      "exclusiveContent": {
+        "title": "Exclusive content",
+        "description": "Access a variety of exclusive resources and materials designed to support you on your academic and professional journey. These include guides, webinars, workshops, and much more, all designed to help you succeed."
+      }
+    }
+  },
+    "team": {
+    "president": "President",
+    "socialCoordinator": "Social Area Coordinator",
+    "director": "Director",
+    "evaluationCoordinator": "Evaluation and Data Area Coordinator",
+    "subdirector": "Deputy Director",
+    "alliancesCoordinator": "Alliances and Cooperation Coordinator",
+    "legalCoordinator": "Legal Area Coordinator",
+    "communicationsCoordinator": "Communications Area Coordinator",
+    "administrativeCoordinator": "Administrative and Financial Area Coordinator"
+  },
+  "aboutUs": {
+    "changeTheory": {
+      "title": "THEORY OF CHANGE",
+      "description": "Identify students with vulnerabilities and accompany them holistically, through an ecosystem of strategies focused on academic, economic, and socio-emotional support for retention."
+    },
+    "mission": {
+      "title": "MISSION",
+      "description": "Increase graduation rates of students in technology-related degrees and programs through strategies that promote retention and prevent dropout."
+    },
+    "vision": {
+      "title": "VISION",
+      "description": "In 5 years, we will have a national presence in the top 10 universities in the country, where we will have reduced the dropout rate by 10 percentage points (from 50% to 40%). In addition, we will be replicating a model that is a reference, whose success can be measured qualitatively and quantitatively."
+    },
+    "values": {
+      "title": "VALUES",
+      "description": "At the Antivirus Foundation for Dropout Prevention, we do our work collaboratively, with passion, integrity, autonomy, empathy, commitment, and teamwork. We are supportive and innovative, and we have a strong sense of service."
+    },
+    "purpose": {
+      "title": "PURPOSE",
+      "description": "To build a prosperous, peaceful, harmonious, technological, and competitive country where all young people have access to education and are good human beings, with goals and empowered in their lives. Thanks to this, we will overcome poverty and become a reference for development."
+    },
+    "targetAudience": {
+      "title": "TARGET AUDIENCE",
+      "description": "We work with students in IT-related degrees and programs in Secondary and Postsecondary Education. We focus our intervention on students vulnerable to dropout."
+    },
+    "priorities": {
+      "title": "PRIORITIES",
+      "item1": "Consolidate a model with processes for identifying vulnerabilities, intervention, and outcome indicators.",
+      "item2": "Explore intervention models from schools to help reduce dropout in higher education.",
+      "item3": "Get to know and involve other actors in the work for retention (Rectors, Deans, MEN, Companies, among others).",
+      "item4": "Help reduce dropout in other universities and programs to refine our model and generate income that contributes to the sustainability of the Antivirus Foundation."
+    }
+  },
+  "ourMission": {
+    "heading": "WHO WE ARE?",
+    "descriptionTitle": "WE ARE A NON-PROFIT ORGANIZATION THAT",
+    "description": "Seeks to reduce student dropout rates in Colombia, improve retention and graduation rates, as our way of contributing to achieving a country with more education and consequently with more development."
+  },
+  "studyChances": {
+    "heading": "Study Opportunities!",
+    "sapienciaTitle": "Business Alliance - Sapiencia",
+    "sapienciaDescription": "Focuses on promoting employment for women and youth, facilitating their access to decent job opportunities. Through training programs in digital skills, leadership, and entrepreneurship.",
+    "comfamaTitle": "Business Alliance - Comfama",
+    "comfamaDescription": "Centers on boosting employment, providing access to fair job opportunities. Through training programs in digital skills, leadership, and business development."
+  },
+  "formSearch": {
+    "placeHolder": "Find your next opportunity",
+    "date": "Filter your search:",
+    "location": "Location",
+    "tipeOportuniti": "Type of opportunity",
+    "option1": "Educational",
+    "button1": "Search",
+    "button2": "Clear"
+  }
+}

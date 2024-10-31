@@ -1,0 +1,28 @@
+a {
+  background-color: #FFBA08;
+  color: white;
+  padding: 8px 30px;
+  border-radius: 8px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+a::after {
+  content: '\2192';
+  position: absolute;
+  opacity: 0;
+  right: -20px;
+  transition: all 0.3s ease;
+}
+
+a:hover::after {
+  opacity: 1;
+  right: 10px;
+}
+
+a:hover {
+  transform: scale(1.05); 
+}

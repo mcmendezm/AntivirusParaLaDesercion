@@ -1,0 +1,177 @@
+{
+  "navbar": {
+    "services": "Servicios",
+    "opportunities": "Oportunidades",
+    "aboutUs": "Quiénes Somos",
+    "news": "Novedades",
+    "register": "Registrarme",
+    "login": "Ingresar",
+    "search": "Buscar",
+    "send": "Enviar"
+  },
+    "header": {
+    "title": "¡Tu futuro inicia aquí!",
+    "description": "En la Fundación Antivirus para la Deserción creemos que cada persona merece acceso a las mejores oportunidades. Por eso, ofrecemos una plataforma personalizada donde puedes explorar becas, cursos y programas adaptados a tus intereses y necesidades.",
+    "contactUs": "Contáctanos",
+    "learnAboutUs": "Conoce sobre nosotros"
+  },
+  "opportunities": {
+    "heading": "¡Descubre estas oportunidades únicas!",
+    "cards": {
+      "nodoEafit": {
+        "title": "Nodo Eafit",
+        "description": "Participa en programas de formación y talleres en la Universidad EAFIT en el área de la tecnología para potenciar tus habilidades y conocimientos. ¡Inscríbete hoy!"
+      },
+      "velezReyes": {
+        "title": "Becas vélezreyes+",
+        "description": "Ofrecen apoyo financiero a estudiantes destacados. Solicita tu beca y alcanza tus metas educativas."
+      },
+      "comfama": {
+        "title": "Comfama",
+        "description": "Accede a programas educativos y recreativos con Comfama. Encuentra la oportunidad perfecta para tu crecimiento personal y profesional."
+      }
+    }
+  },
+    "services": {
+    "heading": "Servicios",
+    "cards": {
+      "proVocacion": {
+        "title": "Pro-Vocación",
+        "description": "Descubre tu verdadera vocación a través de nuestro programa Pro-Vocación. Te ayudamos a identificar tus fortalezas y a explorar las mejores opciones educativas y profesionales. ¡Da el primer paso hacia tu futuro hoy!",
+        "buttonText": "LO QUIERO"
+      },
+      "asesoriaSociopedagogica": {
+        "title": "Asesoría Sociopedagógica",
+        "description": "Recibe orientación personalizada para superar los desafíos educativos. Nuestra asesoría sociopedagógica te ofrece herramientas y estrategias para mejorar tu rendimiento académico y bienestar personal.",
+        "buttonText": "LO QUIERO"
+      },
+      "testSociovocacional": {
+        "title": "Test Sociovocacional",
+        "description": "¿No estás seguro de cuál es la mejor carrera para ti? Nuestro Test Sociovocacional te guiará en la elección de una carrera basada en tus intereses, habilidades y valores personales. ¡Descubre tu camino ideal!",
+        "buttonText": "LO QUIERO"
+      }
+    }
+},
+  "footer": {
+    "contactUs": "¿Quieres saber más de nosotros?",
+    "callToAction": "Contáctanos hoy mismo.",
+    "bankOfOpportunities": "Banco de Oportunidades",
+    "rightsReserved": "FUNDACIÓN ANTIVIRUS © 2024 - Todos los Derechos Reservados"
+  },
+    "button": {
+    "donate": "Donar ❤️"
+  },
+    "login": {
+    "welcome": "Bienvenido a tu",
+    "bankOfOpportunities": "Banco de oportunidades",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@gmail.com",
+    "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "*********",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "Olvidé mi contraseña",
+    "loginButton": "Login",
+    "noAccount": "¿No tienes una cuenta?",
+    "register": "Regístrate"
+  },
+    "register": {
+    "heading": "¿Preparado para encontrar tu próxima oportunidad?",
+    "loginWithGoogle": "Ingresa con Google",
+    "loginWithFacebook": "Ingresa con Facebook",
+    "nameLabel": "Nombre",
+    "surnameLabel": "Apellido",
+    "birthdateLabel": "Día de nacimiento",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@gmail.com",
+    "passwordLabel": "Contraseña",
+    "confirmPasswordLabel": "Confirmar Contraseña",
+    "passwordPlaceholder": "*********",
+    "createAccountButton": "Crear Cuenta"
+  },
+  "benefits": {
+    "heading": "¡Obtén los siguientes beneficios!",
+    "items": {
+      "profileCreation": {
+        "title": "Registro y creación del perfil personal",
+        "description": "Crea tu perfil personal para destacar tus logros, habilidades y aspiraciones. Esto te permitirá tener una presencia personalizada dentro de nuestra comunidad, facilitando el acceso a oportunidades adecuadas para ti."
+      },
+      "saveOpportunities": {
+        "title": "Guardar oportunidades",
+        "description": "Encuentra y guarda oportunidades relevantes que se alineen con tus intereses y metas académicas. De esta manera, podrás acceder fácilmente a ellas en el futuro y no perder ninguna oferta importante."
+      },
+      "personalizedRecommendations": {
+        "title": "Recomendaciones personalizadas",
+        "description": "Recibe sugerencias específicas y adaptadas a tus necesidades y perfil. Nuestro sistema inteligente analizará tus intereses y te brindará recomendaciones que te ayudarán a aprovechar al máximo las oportunidades disponibles."
+      },
+      "exclusiveContent": {
+        "title": "Contenido exclusivo",
+        "description": "Accede a una variedad de recursos y materiales exclusivos, diseñados para apoyarte en tu camino académico y profesional. Estos incluyen guías, webinars, talleres y mucho más, todo pensado para ayudarte a tener éxito."
+      }
+    }
+  },
+  "team": {
+    "president": "Presidente",
+    "socialCoordinator": "Coordinadora Área Social",
+    "director": "Director",
+    "evaluationCoordinator": "Coordinadora Área Evaluacion y Datos",
+    "subdirector": "Subdirector",
+    "alliancesCoordinator": "Coordinadora Alianzas y Cooperación",
+    "legalCoordinator": "Coordinador Área Legal",
+    "communicationsCoordinator": "Coordinadora Área Comunicaciones",
+    "administrativeCoordinator": "Coordinador Área Administrativa y Financiera"
+  },
+  "aboutUs": {
+    "changeTheory": {
+      "title": "TEORÍA DEL CAMBIO",
+      "description": "Identificar estudiantes con vulnerabilidades y acompañarlos integralmente, a través de un ecosistema de estrategias centrado en lo académico, económico y socioemocional para la permanencia."
+    },
+    "mission": {
+      "title": "MISIÓN",
+      "description": "Aumentar las tasas de graduación de estudiantes de carreras y programas en áreas de tecnología, a través de estrategias de promoción de la permanencia y prevención de la deserción."
+    },
+    "vision": {
+      "title": "VISIÓN",
+      "description": "En 5 años vamos a tener presencia a nivel nacional, en las 10 mejores universidades del país, donde habremos disminuido la tasa de deserción en 10 puntos porcentuales (del 50 al 40%). Además, vamos a estar replicando un modelo que es referente, cuyo éxito se puede medir cualitativa y cuantitativamente."
+    },
+    "values": {
+      "title": "VALORES",
+      "description": "En la Fundación Antivirus para la Deserción hacemos nuestro trabajo de forma colaborativa, con pasión, integridad, autonomía, empatía, compromiso y compañerismo. Somos solidarios e innovadores y tenemos una gran vocación de servicio."
+    },
+    "purpose": {
+      "title": "PROPÓSITO",
+      "description": "Construir un país próspero, pacífico, armonioso, tecnológico y competitivo, en el cual todos los jóvenes tienen acceso a la educación y son buenos seres humanos, con metas y empoderados de sus vidas. Gracias a esto, lograremos superar la pobreza y nos convertiremos en un referente de desarrollo."
+    },
+    "targetAudience": {
+      "title": "PÚBLICO OBJETIVO",
+      "description": "Trabajamos con estudiantes de carreras y programas TI de Educación Media y Postsecundaria. Enfocamos nuestra intervención en estudiantes vulnerables a la deserción."
+    },
+   "priorities": {
+      "title": "PRIORIDADES",
+      "item1": "Consolidar un modelo con procesos de identificación de vulnerabilidades, intervención e indicadores de resultados.",
+      "item2": "Explorar modelos de intervención desde los colegios para aportar a reducir la deserción en educación superior.",
+      "item3": "Conocer e involucrar a otros actores en el trabajo por la permanencia (Rectores, Decanos, MEN, Empresas, entre otros).",
+      "item4": "Ayudar a reducir la deserción en otras universidades y programas para afinar nuestro modelo y generar ingresos que aporten a la sostenibilidad de la Fundación Antivirus."
+    }
+  },
+    "ourMission": {
+    "heading": "¿QUIÉNES SOMOS?",
+    "descriptionTitle": "SOMOS UNA ORGANIZACIÓN SIN ÁNIMO DE LUCRO QUE",
+    "description": "Busca disminuir los niveles de deserción estudiantil en Colombia, mejorar los niveles de permanencia y de graduación, siendo esta nuestra manera de aportar al logro de un país con más educación y consecuentemente con más desarrollo."
+  },
+  "studyChances": {
+    "heading": "¡Oportunidades para estudiar!",
+    "sapienciaTitle": "Alianza empresarial - Sapiencia",
+    "sapienciaDescription": "Se enfoca en promover el empleo de mujeres y jóvenes, facilitando su acceso a oportunidades laborales dignas. A través de programas de capacitación en habilidades digitales, liderazgo y emprendimiento.",
+    "comfamaTitle": "Alianza empresarial - Comfama",
+    "comfamaDescription": "Se centra en impulsar el empleo, brindándoles acceso a oportunidades laborales justas. A través de programas de formación en habilidades digitales, liderazgo y desarrollo empresarial."
+  },
+  "formSearch": {
+    "placeHolder": "Busca tu próxima oportunidad",
+    "date": "Filtra tu búsqueda:",
+    "location": "Ubicación",
+    "tipeOportuniti": "Tipo de oportunidad",
+    "option1": "Educativa",
+    "button1": "Búsqueda",
+    "button2": "Limpiar"
+  }
+}

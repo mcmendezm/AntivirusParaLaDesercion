@@ -1,0 +1,12 @@
+<div class="relative pt-20 dark:bg-[#0f1629]">
+  <div class="overflow-hidden">
+    <div class="flex transition-transform duration-500" [ngStyle]="{'transform': 'translateX(-' + currentIndex * 100 + '%)'}">
+      <div *ngFor="let item of items" class="w-full flex-shrink-0">
+        <img [src]="item.image" alt="carousel image" class="w-full h-64 object-cover">
+      </div>
+    </div>
+  </div>
+  <button (click)="prev()" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-700 text-white px-4 py-2 rounded-full shadow-lg text-2xl">&lt;</button>
+  <button (click)="next()" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-700 text-white px-4 py-2 rounded-full shadow-lg text-2xl">&gt;</button>
+</div>
+

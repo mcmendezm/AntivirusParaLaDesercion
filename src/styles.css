@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+
+body {
+    /* max-width: 1440px; */
+    margin: 0 auto;
+    padding: 0;
+    overflow-x: hidden;
+}
+html {
+    scroll-behavior: smooth;
+}
+html, body { height: 100%; }
+body {font-family: Roboto, "Helvetica Neue", sans-serif; }
