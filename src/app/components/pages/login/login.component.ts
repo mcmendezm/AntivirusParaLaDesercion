@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthSocialMediaService } from './auth-social-media.service';
 
 @Component({
   selector: 'app-login',
