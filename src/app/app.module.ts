@@ -32,6 +32,7 @@ import { CarouselComponent } from './components/pages/news/newsComponents/carous
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
+import { AuthSocialMediaService } from './components/pages/login/auth-social-media.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { TranslocoRootModule } from './transloco-root.module';
     TranslocoRootModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  
-  providers: [],
+  providers: [AuthSocialMediaService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}
