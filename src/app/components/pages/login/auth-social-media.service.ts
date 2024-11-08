@@ -8,12 +8,13 @@ import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } fr
 })
 export class AuthSocialMediaService {
   private firebaseConfig = {
-    apiKey: "AIzaSyBaYGUmkDa7v-BDY6f_r-JHpPNHwQjEV5s",
-    authDomain: "angular-auth-898ed.firebaseapp.com",
-    projectId: "angular-auth-898ed",
-    storageBucket: "angular-auth-898ed.appspot.com",
-    messagingSenderId: "1079606336153",
-    appId: "1:1079606336153:web:5f34baa521f8999d21b608"
+    apiKey: "AIzaSyBMLyVBxvMwV44fmjIG4reO9QZ8C0jjnbc",
+    authDomain: "botones-d533a.firebaseapp.com",
+    projectId: "botones-d533a",
+    storageBucket: "botones-d533a.firebasestorage.app",
+    messagingSenderId: "1017509360628",
+    appId: "1:1017509360628:web:f213ed328d18c5ad627fa1",
+    measurementId: "G-R11QV45Q2V"
   };
 
   private app = initializeApp(this.firebaseConfig);
