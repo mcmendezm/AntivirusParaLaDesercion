@@ -64,8 +64,8 @@
     "login": {
     "welcome": "Bienvenido a tu",
     "bankOfOpportunities": "Banco de oportunidades",
-    "emailLabel": "Email",
-    "emailPlaceholder": "example@gmail.com",
+    "usernameLabel": "Usuario",
+    "usernamePlaceholder": "example@gmail.com",
     "passwordLabel": "Contraseña",
     "passwordPlaceholder": "*********",
     "rememberMe": "Recordarme",
@@ -78,6 +78,7 @@
     "heading": "¿Preparado para encontrar tu próxima oportunidad?",
     "loginWithGoogle": "Ingresa con Google",
     "loginWithFacebook": "Ingresa con Facebook",
+    "usernameLabel":"Usuario",
     "nameLabel": "Nombre",
     "surnameLabel": "Apellido",
     "birthdateLabel": "Día de nacimiento",

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,8 +11,19 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 export class NavbarComponent {
   currentLanguage: string;
 
-  constructor(private translocoService: TranslocoService) {
+  constructor(private translocoService: TranslocoService, private router: Router) {
     this.currentLanguage = this.translocoService.getActiveLang() === 'es' ? 'ESP' : 'ENG';
+  }
+
+  // Verificar si el usuario está autenticado
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('jwtToken');
+  }
+
+  // Cerrar sesión
+  logout(): void {
+    localStorage.removeItem('jwtToken');
+    this.router.navigate(['/']);  // Redirige al usuario a la página principal
   }
 
   toggleLanguage(): void {
