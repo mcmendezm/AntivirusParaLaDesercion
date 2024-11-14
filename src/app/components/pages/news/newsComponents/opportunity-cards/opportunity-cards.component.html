@@ -4,45 +4,11 @@
   </h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
     <app-opportunity-card
-      imageSrc="assets/images/Sapiencia-carrusel.jpg"
-      imageAlt="Ejemplo"
-      title="{{ 'studyChances.sapienciaTitle' | transloco }}"
-      description="{{ 'studyChances.sapienciaDescription' | transloco }}">
-    </app-opportunity-card>
-
-    <app-opportunity-card
-      imageSrc="assets/images/comfama.jpg"
-      imageAlt="Ejemplo"
-      title="{{ 'studyChances.comfamaTitle' | transloco }}"
-      description="{{ 'studyChances.comfamaDescription' | transloco }}">
-    </app-opportunity-card>
-
-    <app-opportunity-card
-      imageSrc="assets/images/Sapiencia-carrusel.jpg"
-      imageAlt="Ejemplo"
-      title="{{ 'studyChances.sapienciaTitle' | transloco }}"
-      description="{{ 'studyChances.sapienciaDescription' | transloco }}">
-    </app-opportunity-card>
-
-    <app-opportunity-card
-      imageSrc="assets/images/comfama.jpg"
-      imageAlt="Ejemplo"
-      title="{{ 'studyChances.comfamaTitle' | transloco }}"
-      description="{{ 'studyChances.comfamaDescription' | transloco }}">
-    </app-opportunity-card>
-
-    <app-opportunity-card
-      imageSrc="assets/images/Sapiencia-carrusel.jpg"
-      imageAlt="Ejemplo"
-      title="{{ 'studyChances.sapienciaTitle' | transloco }}"
-      description="{{ 'studyChances.sapienciaDescription' | transloco }}">
-    </app-opportunity-card>
-
-    <app-opportunity-card
-      imageSrc="assets/images/comfama.jpg"
-      imageAlt="Ejemplo"
-      title="{{ 'studyChances.comfamaTitle' | transloco }}"
-      description="{{ 'studyChances.comfamaDescription' | transloco }}">
+      *ngFor="let oportunidad of oportunidades"
+      [imageSrc]="'assets/images/comfama.jpg'" 
+      [imageAlt]="oportunidad.nombre"
+      [title]="oportunidad.nombre"
+      [description]="oportunidad.descripcion">
     </app-opportunity-card>
   </div>
 </section>
