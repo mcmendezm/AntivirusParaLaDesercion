@@ -1,5 +1,12 @@
-<div class="bg-white p-4 rounded shadow-md dark:bg-[#283446] dark:text-[#a8afc4]">
-  <img [src]="imageSrc" class="w-full h-48 object-cover rounded mb-4" [alt]="imageAlt">
-  <h5 class="text-xl font-semibold mb-2">{{ title }}</h5>
-  <p>{{ description }}</p>
+<div class="card rounded-lg shadow-lg dark:bg-[#1a2b40]">
+  <img [src]="imageSrc" [alt]="imageAlt" class="w-full h-48 object-cover rounded-t-lg">
+  <div class="p-4">
+    <h3 class="text-xl font-bold mb-2 text-blue-900 dark:text-[#12a6e8]">{{ title }}</h3>
+    <p class="text-sm text-gray-700 dark:text-[#a8afc4] mb-4">{{ description }}</p>
+    <p class="text-sm"><strong>Modalidad:</strong> {{ modalidad }}</p>
+    <p class="text-sm"><strong>Requisitos:</strong> {{ requisitos }}</p>
+    <p class="text-sm"><strong>Tipo:</strong> {{ tipo }}</p>
+    <p class="text-sm"><strong>Institución:</strong> {{ institucion }}</p>
+    <p class="text-sm"><strong>Ubicación:</strong> {{ ubicacion }}</p>
+  </div>
 </div>

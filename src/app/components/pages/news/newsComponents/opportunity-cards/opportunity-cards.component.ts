@@ -17,13 +17,16 @@ export class OpportunityCardsComponent implements OnInit {
 
   private loadOportunidades(): void {
     this.dataService.getOportunidades().subscribe({
-      next: (data) => {
-        console.log('Oportunidades cargadas:', data);
+      next: (data: any[]) => {
         this.oportunidades = data;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error al cargar oportunidades:', err);
       }
     });
+  }
+
+  getImageName(nombreInstitucion: string): string {
+    return nombreInstitucion.replace(/\s+/g, '-').toLowerCase() + '.jpg';
   }
 }
