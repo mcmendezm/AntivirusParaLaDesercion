@@ -2,7 +2,8 @@
   <h2 class="text-2xl text-blue-900 font-bold text-center mb-6 pt-10 pb-10 dark:text-[#12a6e8]">
     {{ 'studyChances.heading' | transloco }}
   </h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+
+  <div *ngIf="filteredOportunidades.length > 0; else noData" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
     <app-opportunity-card
       *ngFor="let oportunidad of filteredOportunidades"
       [imageSrc]="'assets/images/' + getImageName(oportunidad.institucion.nombre)"
@@ -13,7 +14,14 @@
       [requisitos]="oportunidad.requisitos"
       [tipo]="oportunidad.tipo"
       [institucion]="oportunidad.institucion.nombre"
-      [ubicacion]="oportunidad.institucion.ubicacion">
+      [ubicacion]="oportunidad.institucion.ubicacion"
+      [sector]="oportunidad.categoria.nombre">
     </app-opportunity-card>
-  </div>  
+  </div>
+
+  <ng-template #noData>
+    <div class="text-center text-gray-500 dark:text-gray-300 mt-10 mb-28 text-xl">
+      <p class="mb-8">{{ 'studyChancesText.noResults' | transloco }}</p>
+    </div>
+  </ng-template>
 </section>

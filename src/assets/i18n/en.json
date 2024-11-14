@@ -1,4 +1,8 @@
 {
+  "studyChancesText": {
+    "heading": "Study Opportunities",
+    "noResults": "Sorry, no opportunities match your search."
+  },
   "navbar": {
     "services": "Services",
     "opportunities": "Opportunities",
@@ -174,3 +178,4 @@
     "button2": "Clear"
   }
 }
+

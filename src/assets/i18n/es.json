@@ -1,4 +1,8 @@
 {
+    "studyChancesText": {
+      "heading": "Oportunidades de Estudio",
+      "noResults": "Lo sentimos, no hay oportunidades que coincidan con tu búsqueda."
+    },  
   "navbar": {
     "services": "Servicios",
     "opportunities": "Oportunidades",

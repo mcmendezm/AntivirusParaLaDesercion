@@ -15,4 +15,5 @@ export class OpportunityCardComponent {
   @Input() tipo!: string; 
   @Input() institucion!: string; 
   @Input() ubicacion!: string;
+  @Input() sector!: string;
 }
