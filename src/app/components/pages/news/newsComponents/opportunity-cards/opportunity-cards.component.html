@@ -4,7 +4,7 @@
   </h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
     <app-opportunity-card
-      *ngFor="let oportunidad of oportunidades"
+      *ngFor="let oportunidad of filteredOportunidades"
       [imageSrc]="'assets/images/' + getImageName(oportunidad.institucion.nombre)"
       [imageAlt]="oportunidad.nombre"
       [title]="oportunidad.nombre"
@@ -15,5 +15,5 @@
       [institucion]="oportunidad.institucion.nombre"
       [ubicacion]="oportunidad.institucion.ubicacion">
     </app-opportunity-card>
-  </div>
+  </div>  
 </section>

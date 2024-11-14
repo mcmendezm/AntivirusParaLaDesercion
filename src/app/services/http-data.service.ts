@@ -14,7 +14,7 @@ export class HttpDataService {
     const token = this.authService.getToken(); 
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJHdWlsbGVybW8iLCJpYXQiOjE3MzE2MTY1MzQsImV4cCI6MTczMTYxNzk3NH0.NPIoS8J7ggrMW-s8YR0wZF9taaE9EFRGAgTkN7to0Nc'}` 
+      'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJHdWlsbGVybW8iLCJpYXQiOjE3MzE2MjM4OTYsImV4cCI6MTczMTcxMDI5Nn0.xmyir79jCnVhLv2wyFwQdI8NNEkUZ2MuHmT_IW8ye1o'}` 
     });
   }
 
