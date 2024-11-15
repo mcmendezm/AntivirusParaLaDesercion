@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  getToken(): string {
-    return localStorage.getItem('authToken') || ''; // Recupera el token del almacenamiento local
-  }
+  private tokenKey = 'jwtToken'; 
 
   setToken(token: string): void {
-    localStorage.setItem('authToken', token); // Guarda el token en el almacenamiento local
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
 
   clearToken(): void {
-    localStorage.removeItem('authToken'); // Elimina el token si es necesario
+    localStorage.removeItem(this.tokenKey);
   }
 }
+
