@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   constructor(private dataService: HttpDataService) {}
 
   ngOnInit(): void {
-    this.loadUsuarios(); // Cargar usuarios al iniciar el componente
+    this.loadUsuarios();
   }
 
   setActiveSection(section: string): void {
@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
     this.showSidebar = false;
 
     if (section === 'usuarios') {
-      this.loadUsuarios(); // Cargar usuarios cuando se selecciona la sección
+      this.loadUsuarios(); 
     }
   }
 
@@ -50,5 +50,32 @@ export class AdminComponent implements OnInit {
         },
       });
     }
+  }
+
+  eliminarUsuario(id: number): void {
+    this.dataService.deleteUsuario(id).subscribe({
+      next: () => {
+        console.log(`Usuario con ID ${id} eliminado`);
+        this.usuarios = this.usuarios.filter((usuario) => usuario.id !== id);
+      },
+      error: (err) => {
+        console.error(`Error al eliminar el usuario con ID ${id}:`, err);
+      },
+    });
+  }
+
+  editarUsuario(id: number, datosActualizados: any): void {
+    this.dataService.updateUsuario(id, datosActualizados).subscribe({
+      next: (usuarioActualizado) => {
+        console.log('Usuario actualizado:', usuarioActualizado);
+        const index = this.usuarios.findIndex((usuario) => usuario.id === id);
+        if (index !== -1) {
+          this.usuarios[index] = usuarioActualizado;
+        }
+      },
+      error: (err) => {
+        console.error(`Error al actualizar el usuario con ID ${id}:`, err);
+      },
+    });
   }
 }
