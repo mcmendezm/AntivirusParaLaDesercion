@@ -24,7 +24,7 @@
   <button 
     class="md:hidden p-2 border border-gray-300 rounded-lg dark:border-gray-700"
     (click)="toggleSidebar()">
-    <img src="assets/icons/chevron-right.svg" alt="Toggle Sidebar" class="h-4 w-4" />
+    <img src="assets/images/plus.png" alt="Toggle Sidebar" class="h-4 w-4" />
   </button>
 
   <div *ngIf="showSidebar" class="fixed inset-0 z-50 w-64 bg-gray-50 dark:bg-[#1b263b] p-4">
@@ -50,18 +50,26 @@
   <!-- Contenido principal -->
   <div class="flex-1 overflow-auto dark:bg-[#0f1629]">
     <div class="flex h-14 items-center justify-between border-b px-4 dark:border-gray-700">
-      <h1 class="text-lg font-semibold capitalize text-gray-800 dark:text-white">{{ activeSection | transloco }}</h1>
+      <h1 class="text-lg font-semibold capitalize text-gray-800 dark:text-white">{{ activeSection }}</h1>
       <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center">
         <img src="assets/images/plus.png" alt="Agregar" class=" mr-2 h-4 w-4 noFilter" />
         {{ 'admin.addButton' | transloco }}
       </button>
     </div>
-    <div class="p-4">
-      <div class="rounded-lg border bg-white dark:bg-[#283446] dark:border-gray-700 p-4 shadow-sm">
-        <p class="text-sm text-gray-500 dark:text-gray-300">
-          Contenido de la sección {{ activeSection }}
-        </p>
+
+    <!-- Lista de tarjetas de usuarios -->
+    <div class="p-4" *ngIf="activeSection === 'usuarios'">
+      <div *ngIf="usuarios.length > 0; else noUsuarios">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div *ngFor="let usuario of usuarios" class="rounded-lg border bg-white dark:bg-[#283446] dark:border-gray-700 p-4 shadow-sm">
+            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ usuario.nombre }}</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-300">{{ usuario.correo }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-300">Rol: {{ usuario.rol }}</p>
+          </div>
+        </div>
       </div>
+      <ng-template #noUsuarios>
+        <p class="text-center text-gray-500 dark:text-gray-300">No hay usuarios disponibles.</p>
+      </ng-template>
     </div>
-  </div>
-</div>
+    

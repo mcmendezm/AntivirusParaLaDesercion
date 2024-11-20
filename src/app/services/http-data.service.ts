@@ -14,13 +14,13 @@ export class HttpDataService {
 
   // Método para obtener las cabeceras con el token
   private getHeaders(): HttpHeaders {
-    const token = this.authService.getToken(); 
+    const token = localStorage.getItem('jwtToken');
     if (!token) {
       console.error('Token no encontrado. Asegúrate de que el usuario esté autenticado.');
     }
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` 
+      'Authorization': `Bearer ${token}`
     });
   }
 
@@ -60,5 +60,10 @@ export class HttpDataService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  // Método para obtener todas los usuarios que estan en la base de datos
+  getUsuarios(): Observable<any[]> {
+    return this.http.get<any[]>(`${BASE_URL}/usuarios`, { headers: this.getHeaders() });
   }
 }

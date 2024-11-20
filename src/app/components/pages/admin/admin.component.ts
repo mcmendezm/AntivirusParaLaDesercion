@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpDataService } from 'src/app/services/http-data.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
 })
-export class AdminComponent {
-  activeSection: string = 'usuarios';
+export class AdminComponent implements OnInit {
+  activeSection: string = 'usuarios'; 
   showSidebar: boolean = false;
 
   menuItems = [
@@ -16,12 +17,38 @@ export class AdminComponent {
     { id: 'configuracion', label: 'Configuración', icon: 'settings.png' },
   ];
 
-  setActiveSection(section: string) {
-    this.activeSection = section;
-    this.showSidebar = false;
+  usuarios: any[] = [];
+
+  constructor(private dataService: HttpDataService) {}
+
+  ngOnInit(): void {
+    this.loadUsuarios(); // Cargar usuarios al iniciar el componente
   }
 
-  toggleSidebar() {
+  setActiveSection(section: string): void {
+    this.activeSection = section;
+    this.showSidebar = false;
+
+    if (section === 'usuarios') {
+      this.loadUsuarios(); // Cargar usuarios cuando se selecciona la sección
+    }
+  }
+
+  toggleSidebar(): void {
     this.showSidebar = !this.showSidebar;
+  }
+
+  private loadUsuarios(): void {
+    if (this.activeSection === 'usuarios') {
+      this.dataService.getUsuarios().subscribe({
+        next: (data) => {
+          console.log('Usuarios cargados desde el backend:', data);
+          this.usuarios = data;
+        },
+        error: (err) => {
+          console.error('Error al cargar usuarios:', err);
+        },
+      });
+    }
   }
 }
