@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,11 +29,12 @@ import { TeamCardComponent } from './components/pages/ourteam/ourteamComponents/
 import { OpportunityCardComponent } from './components/pages/news/newsComponents/opportunity-card/opportunity-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselComponent } from './components/pages/news/newsComponents/carousel/carousel.component';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { FormsModule } from '@angular/forms';
 import { AuthSocialMediaService } from './components/pages/login/auth-social-media.service';
+import { AdminComponent } from './components/pages/admin/admin.component';
+
 
 @NgModule({
   declarations: [
@@ -63,16 +64,16 @@ import { AuthSocialMediaService } from './components/pages/login/auth-social-med
     ServicesCardComponent,
     TeamCardComponent,
     OpportunityCardComponent,
-    CarouselComponent
+    CarouselComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CommonModule,
     FormsModule,
     HttpClientModule,
-    TranslocoRootModule
+    TranslocoRootModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],  
   providers: [AuthSocialMediaService],

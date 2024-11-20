@@ -8,6 +8,7 @@
     "opportunities": "Oportunidades",
     "aboutUs": "Quiénes Somos",
     "news": "Novedades",
+    "admi": "Administrar",
     "register": "Registrarme",
     "login": "Ingresar",
     "search": "Buscar",
@@ -178,5 +179,16 @@
     "option1": "Educativa",
     "button1": "Búsqueda",
     "button2": "Limpiar"
+  },
+  "admin": {
+    "panelTitle": "Panel de Administración",
+    "addButton": "Agregar",
+    "sections": {
+      "usuarios": "Usuarios",
+      "servicios": "Servicios",
+      "notificaciones": "Notificaciones",
+      "configuracion": "Configuración"
+    }
   }
 }
+

@@ -5,14 +5,17 @@ import { NewsComponent } from './components/pages/news/news.component';
 import { OurteamComponent } from './components/pages/ourteam/ourteam.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component'; 
+import { AdminComponent } from './components/pages/admin/admin.component';
+import { AuthGuard } from '../app/guard/auth.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },  
-  { path: 'news', component: NewsComponent },
+  { path: 'news', component: NewsComponent, canActivate: [AuthGuard] },
   { path: 'ourteam', component: OurteamComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '', pathMatch: 'full' }  
 ];
 

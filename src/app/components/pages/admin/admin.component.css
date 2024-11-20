@@ -1,0 +1,12 @@
+button {
+  transition: background-color 0.3s, color 0.3s;
+}
+button img {
+  filter: invert(50%);
+}
+.dark-mode button img {
+  filter: invert(100%);
+}
+.noFilter {
+  filter: none !important;
+}
