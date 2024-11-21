@@ -66,7 +66,8 @@ export class AdminComponent implements OnInit {
   }
 
   enableEditMode(usuario: any): void {
-    usuario.isEditing = true; // Habilitamos el modo de edición
+    this.usuarios.forEach(u => u.isEditing = false); // Desactiva edición en otros usuarios
+    usuario.isEditing = true; // Activa edición en el usuario seleccionado
   }
 
 guardarEdicion(usuario: any): void {
@@ -99,9 +100,9 @@ guardarEdicion(usuario: any): void {
     usuario.isEditing = false; 
     this.loadUsuarios(); 
   }
-// admin.component.ts
+  nuevoUsuario: any | null = null;
 abrirFormularioNuevoUsuario(): void {
-  const nuevoUsuario = {
+  this.nuevoUsuario = {
     nombre: '',
     correo: '',
     password: '',
@@ -114,27 +115,14 @@ abrirFormularioNuevoUsuario(): void {
     credentialsNonExpired: true,
     enabled: true
   };
-
-  // Agrega el usuario temporalmente para el formulario
-  this.usuarios.unshift({ ...nuevoUsuario, isNew: true, isEditing: true });
 }
 
-guardarNuevoUsuario(usuario: any): void {
-  const payload = {
-    nombre: usuario.nombre || '',
-    correo: usuario.correo || '',
-    password: usuario.password || '',
-    rol: usuario.rol || 'USER',
-    username: usuario.username || usuario.nombre || '',
-    fechaNacimiento: usuario.fechaNacimiento || null, 
-  };
-
-  console.log('Payload que se enviará:', payload); // Verifica que la fecha esté incluida
-
-  this.dataService.crearUsuario(payload).subscribe({
+guardarNuevoUsuario(): void {
+  this.dataService.crearUsuario(this.nuevoUsuario).subscribe({
     next: (usuarioCreado) => {
       console.log('Usuario creado:', usuarioCreado);
-      this.usuarios[0] = { ...usuarioCreado, isEditing: false, isNew: false };
+      this.usuarios.push({ ...usuarioCreado, isEditing: false, isNew: false });
+      this.nuevoUsuario = null; 
     },
     error: (err) => {
       console.error('Error al crear el usuario:', err);
@@ -145,9 +133,9 @@ guardarNuevoUsuario(usuario: any): void {
 
 
 
-cancelarCreacion(usuario: any): void {
-  // Elimina al usuario temporalmente agregado
-  this.usuarios = this.usuarios.filter((u) => !u.isNew);
+
+cancelarCreacion(): void {
+  this.nuevoUsuario = null; 
 }
 
 }
