@@ -14,7 +14,6 @@ export class HttpDataService {
   // Método para obtener las cabeceras con el token
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('jwtToken');
-    console.log('Token enviado:', token); // Agrega esta línea
     if (!token) {
       console.error('Token no encontrado. Asegúrate de que el usuario esté autenticado.');
     }
@@ -73,4 +72,16 @@ export class HttpDataService {
     return this.http.get<any[]>(`${BASE_URL}/oportunidades`, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
+
+  // crear usuario con metodo POST
+  crearUsuario(datosNuevoUsuario: any): Observable<any> {
+    console.log('Body enviado al servidor:', datosNuevoUsuario); // Log para inspección
+    return this.http.post<any>(
+      `${BASE_URL}/usuarios/register`,
+      datosNuevoUsuario,
+      { headers: this.getHeaders() }
+    ).pipe(catchError(this.handleError));
+  }
+  
+
 }

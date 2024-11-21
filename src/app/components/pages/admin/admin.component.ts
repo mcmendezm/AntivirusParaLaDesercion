@@ -78,13 +78,6 @@ guardarEdicion(usuario: any): void {
     rol: usuario.rol,
     username: usuario.username || usuario.nombre, 
     fechaNacimiento: usuario.fechaNacimiento || null,
-    authorities: [
-      { authority: usuario.rol } 
-    ],
-    accountNonExpired: true,
-    accountNonLocked: true,
-    credentialsNonExpired: true,
-    enabled: true
   };
 
   this.dataService.updateUsuario(usuario.id, payload).subscribe({
@@ -106,4 +99,55 @@ guardarEdicion(usuario: any): void {
     usuario.isEditing = false; 
     this.loadUsuarios(); 
   }
+// admin.component.ts
+abrirFormularioNuevoUsuario(): void {
+  const nuevoUsuario = {
+    nombre: '',
+    correo: '',
+    password: '',
+    rol: 'USER',
+    username: '',
+    fechaNacimiento: '',
+    authorities: [{ authority: 'USER' }],
+    accountNonExpired: true,
+    accountNonLocked: true,
+    credentialsNonExpired: true,
+    enabled: true
+  };
+
+  // Agrega el usuario temporalmente para el formulario
+  this.usuarios.unshift({ ...nuevoUsuario, isNew: true, isEditing: true });
+}
+
+guardarNuevoUsuario(usuario: any): void {
+  const payload = {
+    nombre: usuario.nombre || '',
+    correo: usuario.correo || '',
+    password: usuario.password || '',
+    rol: usuario.rol || 'USER',
+    username: usuario.username || usuario.nombre || '',
+    fechaNacimiento: usuario.fechaNacimiento || null, 
+  };
+
+  console.log('Payload que se enviará:', payload); // Verifica que la fecha esté incluida
+
+  this.dataService.crearUsuario(payload).subscribe({
+    next: (usuarioCreado) => {
+      console.log('Usuario creado:', usuarioCreado);
+      this.usuarios[0] = { ...usuarioCreado, isEditing: false, isNew: false };
+    },
+    error: (err) => {
+      console.error('Error al crear el usuario:', err);
+    }
+  });
+}
+
+
+
+
+cancelarCreacion(usuario: any): void {
+  // Elimina al usuario temporalmente agregado
+  this.usuarios = this.usuarios.filter((u) => !u.isNew);
+}
+
 }
