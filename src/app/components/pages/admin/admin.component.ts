@@ -12,8 +12,9 @@ export class AdminComponent implements OnInit {
 
   menuItems = [
     { id: 'usuarios', label: 'Usuarios', icon: 'user.png' },
-    { id: 'servicios', label: 'Servicios', icon: 'home.png' },
-    { id: 'notificaciones', label: 'Notificaciones', icon: 'bell.png' },
+    { id: 'instituciones', label: 'Instituciones', icon: 'home.png' },
+    { id: 'bootcamps', label: 'Bootcamps', icon: 'bootcams.png' },
+    { id: 'oportunidades', label: 'Oportunidades', icon: 'oportunidad.png' },
     { id: 'configuracion', label: 'Configuración', icon: 'settings.png' },
   ];
 
@@ -44,7 +45,7 @@ export class AdminComponent implements OnInit {
         next: (data: any[]) => {
           this.usuarios = data.map((usuario) => ({
             ...usuario,
-            isEditing: false, // Agregamos el flag de edición
+            isEditing: false, 
           }));
         },
         error: (err: any) => {
