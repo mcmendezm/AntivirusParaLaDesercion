@@ -34,6 +34,10 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { FormsModule } from '@angular/forms';
 import { AuthSocialMediaService } from './components/pages/login/auth-social-media.service';
 import { AdminComponent } from './components/pages/admin/admin.component';
+import { BootcampsComponent } from './components/pages/admin/bootcamps/bootcamps.component';
+import { SettingsComponent } from './components/pages/admin/settings/settings.component';
+import { UsersComponent } from './components/pages/admin/users/users.component';
+import { InstitutionsComponent } from './components/pages/admin/institutions/institutions.component';
 
 
 @NgModule({
@@ -65,7 +69,11 @@ import { AdminComponent } from './components/pages/admin/admin.component';
     TeamCardComponent,
     OpportunityCardComponent,
     CarouselComponent,
-    AdminComponent
+    AdminComponent,
+    BootcampsComponent,
+    SettingsComponent,
+    UsersComponent,
+    InstitutionsComponent
   ],
   imports: [
     BrowserModule,
