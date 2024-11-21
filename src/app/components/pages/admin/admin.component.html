@@ -24,7 +24,7 @@
   <button
     class="md:hidden p-2 border border-gray-300 rounded-lg dark:border-gray-700"
     (click)="toggleSidebar()">
-    <img src="assets/icons/chevron-right.svg" alt="Toggle Sidebar" class="h-4 w-4" />
+    <img src="assets/images/settings.png" alt="Toggle Sidebar" class="h-4 w-4" />
   </button>
 
   <div *ngIf="showSidebar" class="fixed inset-0 z-50 w-64 bg-gray-50 dark:bg-[#1b263b] p-4">
@@ -41,7 +41,7 @@
         }"
         class="flex w-full items-center gap-3 rounded-lg px-3 py-2 transition-colors"
       >
-        <img src="assets/icons/{{ item.icon }}" alt="{{ item.label }} icon" class="h-5 w-5" />
+        <img src="assets/images/{{ item.icon }}" alt="{{ item.label }} icon" class="h-5 w-5" />
         {{ item.label }}
       </button>
     </nav>
@@ -50,42 +50,86 @@
   <!-- Contenido principal -->
   <div class="flex-1 overflow-auto dark:bg-[#0f1629]">
     <div class="flex h-14 items-center justify-between border-b px-4 dark:border-gray-700">
-      <h1 class="text-lg font-semibold capitalize text-gray-800 dark:text-white">{{ activeSection }}</h1>
+      <h1 class="text-lg font-semibold capitalize text-gray-800 dark:text-white">
+        {{ activeSection }}
+      </h1>
+      <!-- Botón Agregar -->
+      <button
+        *ngIf="activeSection === 'usuarios'"
+        class="px-4 py-2 bg-blue-500 text-white rounded-lg flex items-center hover:bg-blue-600"
+        >
+        <img src="assets/images/plus.png" alt="Agregar" class="mr-2 h-4 w-4 noFilter" />
+        Agregar
+      </button>
     </div>
     <div class="p-4">
-      <!-- Mostrar usuarios si la sección activa es "usuarios" -->
       <div *ngIf="activeSection === 'usuarios'">
         <div *ngIf="usuarios.length > 0; else noUsuarios" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div *ngFor="let usuario of usuarios" class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
-            <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ usuario.nombre }}</h2>
-            <p class="text-sm text-gray-500 dark:text-gray-300">Correo: {{ usuario.correo }}</p>
-            <p class="text-sm text-gray-500 dark:text-gray-300">Rol: {{ usuario.rol }}</p>
-
-            <div class="flex justify-end mt-4 gap-2">
-              <button
-                class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-                (click)="editarUsuario(usuario.id, { nombre: 'Nuevo Nombre', correo: usuario.correo })">
-                Editar
-              </button>
-              <button
-                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-                (click)="eliminarUsuario(usuario.id)">
-                Eliminar
-              </button>
+          <div
+            *ngFor="let usuario of usuarios"
+            class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
+            <div *ngIf="!usuario.isEditing; else editMode">
+              <!-- Modo vista -->
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ usuario.nombre }}</h2>
+              <p class="text-sm text-gray-500 dark:text-gray-300">Correo: {{ usuario.correo }}</p>
+              <p class="text-sm text-gray-500 dark:text-gray-300">Rol: {{ usuario.rol }}</p>
+              <div class="flex justify-end mt-4 gap-2">
+                <button
+                  class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                  (click)="enableEditMode(usuario)">
+                  Editar
+                </button>
+                <button
+                  class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                  (click)="eliminarUsuario(usuario.id)">
+                  Eliminar
+                </button>
+              </div>
             </div>
+            
+            <ng-template #editMode>
+              <input
+                type="text"
+                [(ngModel)]="usuario.nombre"
+                placeholder="Nombre"
+                class="w-full p-2 border rounded mb-2"
+              />
+              <input
+                type="email"
+                [(ngModel)]="usuario.correo"
+                placeholder="Correo"
+                class="w-full p-2 border rounded mb-2"
+              />
+              <select
+                [(ngModel)]="usuario.rol"
+                class="w-full p-2 border rounded mb-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+              </select>
+              <div class="flex justify-end mt-4 gap-2">
+                <button
+                  class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                  (click)="guardarEdicion(usuario)">
+                  Guardar
+                </button>
+                <button
+                  class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+                  (click)="cancelarEdicion(usuario)">
+                  Cancelar
+                </button>
+              </div>
+            </ng-template>
+            
+            
           </div>
         </div>
-
-        <!-- Mostrar mensaje si no hay usuarios -->
         <ng-template #noUsuarios>
           <p class="text-center text-gray-500 dark:text-gray-300">No hay usuarios disponibles.</p>
         </ng-template>
       </div>
-
-      <!-- Contenido dinámico para otras secciones -->
       <div *ngIf="activeSection !== 'usuarios'" class="text-gray-800 dark:text-gray-300">
         <p>Contenido de la sección {{ activeSection }}</p>
       </div>
     </div>
   </div>
-</div>
+  

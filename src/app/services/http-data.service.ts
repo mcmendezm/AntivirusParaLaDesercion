@@ -14,6 +14,7 @@ export class HttpDataService {
   // Método para obtener las cabeceras con el token
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('jwtToken');
+    console.log('Token enviado:', token); // Agrega esta línea
     if (!token) {
       console.error('Token no encontrado. Asegúrate de que el usuario esté autenticado.');
     }
@@ -43,9 +44,11 @@ export class HttpDataService {
 
   // Método para actualizar un usuario
   updateUsuario(id: number, datosActualizados: any): Observable<any> {
+    console.log('Enviando solicitud PUT con datos:', datosActualizados);
     return this.http.put<any>(`${BASE_URL}/usuarios/${id}`, datosActualizados, { headers: this.getHeaders() })
       .pipe(catchError(this.handleError));
   }
+   
 
   // Método para obtener ubicaciones de instituciones
   getUbicaciones(): Observable<any[]> {
