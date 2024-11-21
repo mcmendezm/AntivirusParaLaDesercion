@@ -64,7 +64,7 @@
     </div>
     <div class="p-4">
       <div *ngIf="activeSection === 'usuarios'">
-        <!-- Formulario de Creación -->
+        <!-- Formulario de Agregar -->
         <div *ngIf="nuevoUsuario" class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
           <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Crear Nuevo Usuario</h2>
           <input
@@ -119,84 +119,85 @@
             </button>
           </div>
         </div>
-    <!-- Lista de Usuarios -->
-    <div *ngIf="usuarios.length > 0; else noUsuarios" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div
-        *ngFor="let usuario of usuarios"
-        class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
-        <div *ngIf="!usuario.isEditing; else editMode">
-          <!-- Modo vista -->
-          <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ usuario.nombre }}</h2>
-          <p class="text-sm text-gray-500 dark:text-gray-300">Correo: {{ usuario.correo }}</p>
-          <p class="text-sm text-gray-500 dark:text-gray-300">Rol: {{ usuario.rol }}</p>
-          <div class="flex justify-end mt-4 gap-2">
-            <button
-              class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-              (click)="enableEditMode(usuario)">
-              Editar
-            </button>
-            <button
-              class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-              (click)="eliminarUsuario(usuario.id)">
-              Eliminar
-            </button>
+
+        <!-- Lista de Usuarios -->
+        <div *ngIf="usuarios.length > 0; else noUsuarios" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            *ngFor="let usuario of usuarios"
+            class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
+            <div *ngIf="!usuario.isEditing; else editMode">
+              <!-- Modo vista -->
+              <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ usuario.nombre }}</h2>
+              <p class="text-sm text-gray-500 dark:text-gray-300">Correo: {{ usuario.correo }}</p>
+              <p class="text-sm text-gray-500 dark:text-gray-300">Rol: {{ usuario.rol }}</p>
+              <div class="flex justify-end mt-4 gap-2">
+                <button
+                  class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                  (click)="enableEditMode(usuario)">
+                  Editar
+                </button>
+                <button
+                  class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                  (click)="eliminarUsuario(usuario.id)">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+
+            <ng-template #editMode>
+              <!-- Formulario de Edición -->
+              <input
+                type="text"
+                [(ngModel)]="usuario.nombre"
+                placeholder="Nombre"
+                class="w-full p-2 border rounded mb-2"
+                required
+              />
+              <input
+                type="email"
+                [(ngModel)]="usuario.correo"
+                placeholder="Correo"
+                class="w-full p-2 border rounded mb-2"
+                required
+              />
+              <select
+                [(ngModel)]="usuario.rol"
+                class="w-full p-2 border rounded mb-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+              </select>
+              <input
+                type="text"
+                [(ngModel)]="usuario.username"
+                placeholder="Nombre de usuario"
+                class="w-full p-2 border rounded mb-2"
+              />
+              <input
+                type="date"
+                [(ngModel)]="usuario.fechaNacimiento"
+                placeholder="Fecha de nacimiento"
+                class="w-full p-2 border rounded mb-2"
+              />
+              <div class="flex justify-end mt-4 gap-2">
+                <button
+                  class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                  (click)="guardarEdicion(usuario)">
+                  Guardar
+                </button>
+                <button
+                  class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+                  (click)="cancelarEdicion(usuario)">
+                  Cancelar
+                </button>
+              </div>
+            </ng-template>
           </div>
         </div>
 
-        <ng-template #editMode>
-          <!-- Formulario de Edición -->
-          <input
-            type="text"
-            [(ngModel)]="usuario.nombre"
-            placeholder="Nombre"
-            class="w-full p-2 border rounded mb-2"
-            required
-          />
-          <input
-            type="email"
-            [(ngModel)]="usuario.correo"
-            placeholder="Correo"
-            class="w-full p-2 border rounded mb-2"
-            required
-          />
-          <select
-            [(ngModel)]="usuario.rol"
-            class="w-full p-2 border rounded mb-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-300">
-            <option value="USER">USER</option>
-            <option value="ADMIN">ADMIN</option>
-          </select>
-          <input
-            type="text"
-            [(ngModel)]="usuario.username"
-            placeholder="Nombre de usuario"
-            class="w-full p-2 border rounded mb-2"
-          />
-          <input
-            type="date"
-            [(ngModel)]="usuario.fechaNacimiento"
-            placeholder="Fecha de nacimiento"
-            class="w-full p-2 border rounded mb-2"
-          />
-          <div class="flex justify-end mt-4 gap-2">
-            <button
-              class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-              (click)="guardarEdicion(usuario)">
-              Guardar
-            </button>
-            <button
-              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
-              (click)="cancelarEdicion(usuario)">
-              Cancelar
-            </button>
-          </div>
-        </ng-template>
-      </div>
-    </div>
-
         <!-- Bloque noUsuarios -->
-          <ng-template #noUsuarios>
-            <p class="text-center text-gray-500 dark:text-gray-300">No hay usuarios disponibles.</p>
-          </ng-template>
+        <ng-template #noUsuarios>
+          <p class="text-center text-gray-500 dark:text-gray-300">No hay usuarios disponibles.</p>
+        </ng-template>
       </div>
       <div *ngIf="activeSection !== 'usuarios'" class="text-gray-800 dark:text-gray-300">
         <p>Contenido de la sección {{ activeSection }}</p>

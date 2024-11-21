@@ -101,38 +101,39 @@ guardarEdicion(usuario: any): void {
     this.loadUsuarios(); 
   }
   nuevoUsuario: any | null = null;
-abrirFormularioNuevoUsuario(): void {
-  this.nuevoUsuario = {
-    nombre: '',
-    correo: '',
-    password: '',
-    rol: 'USER',
-    username: '',
-    fechaNacimiento: '',
-    authorities: [{ authority: 'USER' }],
-    accountNonExpired: true,
-    accountNonLocked: true,
-    credentialsNonExpired: true,
-    enabled: true
-  };
-}
+  abrirFormularioNuevoUsuario(): void {
+    this.nuevoUsuario = {
+      nombre: '',
+      correo: '',
+      password: '',
+      rol: 'USER',
+      username: '',
+      fechaNacimiento: '',
+    };
+  }
+  
 
 guardarNuevoUsuario(): void {
-  this.dataService.crearUsuario(this.nuevoUsuario).subscribe({
+  const payload = {
+    nombre: this.nuevoUsuario.nombre,
+    correo: this.nuevoUsuario.correo,
+    password: this.nuevoUsuario.password,
+    rol: this.nuevoUsuario.rol,
+    username: this.nuevoUsuario.username || this.nuevoUsuario.nombre,
+    fechaNacimiento: this.nuevoUsuario.fechaNacimiento || null,
+  };
+
+  this.dataService.crearUsuario(payload).subscribe({
     next: (usuarioCreado) => {
       console.log('Usuario creado:', usuarioCreado);
       this.usuarios.push({ ...usuarioCreado, isEditing: false, isNew: false });
-      this.nuevoUsuario = null; 
+      this.nuevoUsuario = null; // Resetear formulario
     },
     error: (err) => {
       console.error('Error al crear el usuario:', err);
-    }
+    },
   });
 }
-
-
-
-
 
 cancelarCreacion(): void {
   this.nuevoUsuario = null; 

@@ -75,13 +75,13 @@ export class HttpDataService {
 
   // crear usuario con metodo POST
   crearUsuario(datosNuevoUsuario: any): Observable<any> {
-    console.log('Body enviado al servidor:', datosNuevoUsuario); // Log para inspección
-    return this.http.post<any>(
-      `${BASE_URL}/usuarios/register`,
-      datosNuevoUsuario,
-      { headers: this.getHeaders() }
-    ).pipe(catchError(this.handleError));
+    return this.http
+      .post<any>(`${BASE_URL}/usuarios/register`, datosNuevoUsuario, {
+        headers: this.getHeaders(),
+      })
+      .pipe(catchError(this.handleError));
   }
+  
   
 
 }
