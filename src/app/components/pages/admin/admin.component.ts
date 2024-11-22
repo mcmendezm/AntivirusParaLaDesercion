@@ -15,7 +15,6 @@ export class AdminComponent {
     { id: 'bootcamps', label: 'Bootcamps', icon: 'bootcams.png' },
     { id: 'oportunidades', label: 'Oportunidades', icon: 'opportunity.png' },
     { id: 'tematicas', label: 'Tematicas', icon: 'tematic.png' },
-    { id: 'configuracion', label: 'Configuración', icon: 'settings.png' },
   ];
 
   setActiveSection(section: string): void {

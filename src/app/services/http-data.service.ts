@@ -178,5 +178,43 @@ actualizarOportunidad(id: number, oportunidad: any): Observable<any> {
 }
 
 
+//BOOTCAMPS
+
+// Método para obtener todos los bootcamps
+getBootcamps(): Observable<any[]> {
+  return this.http.get<any[]>(`${BASE_URL}/bootcamps`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+// Método para crear un nuevo bootcamp
+crearBootcamp(bootcamp: any): Observable<any> {
+  return this.http.post<any>(`${BASE_URL}/bootcamps`, bootcamp, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+// Método para actualizar un bootcamp existente
+actualizarBootcamp(id: number, bootcamp: any): Observable<any> {
+  return this.http.put<any>(`${BASE_URL}/bootcamps/${id}`, bootcamp, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+// Método para eliminar un bootcamp
+eliminarBootcamp(id: number): Observable<void> {
+  return this.http.delete<void>(`${BASE_URL}/bootcamps/${id}`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+//CONFIGURACIONES
+// Obtener usuario por ID
+getUsuarioPorId(id: number): Observable<any> {
+  return this.http.get<any>(`${BASE_URL}/usuarios/${id}`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+// Actualizar usuario
+actualizarUsuario(id: number, datos: any): Observable<any> {
+  return this.http.put<any>(`${BASE_URL}/usuarios/${id}`, datos, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
 
 }
