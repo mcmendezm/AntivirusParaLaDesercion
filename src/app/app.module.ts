@@ -39,6 +39,7 @@ import { SettingsComponent } from './components/pages/admin/settings/settings.co
 import { UsersComponent } from './components/pages/admin/users/users.component';
 import { InstitutionsComponent } from './components/pages/admin/institutions/institutions.component';
 import { OpportunitiComponent } from './components/pages/admin/opportuniti/opportuniti.component';
+import { TematicComponent } from './components/pages/admin/tematic/tematic.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { OpportunitiComponent } from './components/pages/admin/opportuniti/oppor
     SettingsComponent,
     UsersComponent,
     InstitutionsComponent,
-    OpportunitiComponent
+    OpportunitiComponent,
+    TematicComponent
   ],
   imports: [
     BrowserModule,

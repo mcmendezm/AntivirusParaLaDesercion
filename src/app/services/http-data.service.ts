@@ -118,6 +118,40 @@ deleteInstitucion(id: number): Observable<void> {
   ).pipe(catchError(this.handleError));
 }
 
-  
+
+// TEMATICAS
+
+// Obtener todas las categorías
+getCategorias(): Observable<any[]> {
+  return this.http.get<any[]>(`${BASE_URL}/categorias`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+// Crear una nueva categoría
+crearCategoria(categoria: any): Observable<any> {
+  return this.http.post<any>(
+    `${BASE_URL}/categorias`,
+    categoria,
+    { headers: this.getHeaders() }
+  ).pipe(catchError(this.handleError));
+}
+
+// Actualizar una categoría existente
+updateCategoria(id: number, categoria: any): Observable<any> {
+  return this.http.put<any>(
+    `${BASE_URL}/categorias/${id}`,
+    categoria,
+    { headers: this.getHeaders() }
+  ).pipe(catchError(this.handleError));
+}
+
+// Eliminar una categoría
+deleteCategoria(id: number): Observable<void> {
+  return this.http.delete<void>(
+    `${BASE_URL}/categorias/${id}`,
+    { headers: this.getHeaders() }
+  ).pipe(catchError(this.handleError));
+}
+
 
 }

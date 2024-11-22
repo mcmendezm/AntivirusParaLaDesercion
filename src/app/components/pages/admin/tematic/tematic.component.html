@@ -1,0 +1,88 @@
+<div class="p-4">
+    <!-- Contenedor para el Título y el Botón Agregar -->
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-lg font-semibold text-gray-800 dark:text-white">Temáticas</h1>
+      <button
+      class="px-4 py-2 bg-blue-500 text-white rounded-lg flex items-center hover:bg-blue-600"
+      (click)="abrirFormularioNuevaCategoria()">
+      <img src="assets/images/plus.png" alt="Agregar" class="mr-2 h-4 w-4 noFilter" />
+      Agregar
+    </button>
+    </div>
+    <div *ngIf="nuevaCategoria" class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm mb-10">
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Crear Nueva Categoría</h2>
+        <input
+          type="text"
+          [(ngModel)]="nuevaCategoria.nombre"
+          placeholder="Nombre de la categoría"
+          class="w-full p-2 border rounded mb-2"
+          required
+        />
+        <div class="flex justify-end mt-4 gap-2">
+          <button
+            class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+            (click)="guardarNuevaCategoria()">
+            Guardar
+          </button>
+          <button
+            class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+            (click)="cancelarCreacion()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+      
+  
+    <!-- Lista de Categorías -->
+    <div *ngIf="categorias.length > 0; else noCategorias" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+      <div
+        *ngFor="let categoria of categorias"
+        class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
+        <div *ngIf="!categoria.isEditing; else editMode">
+          <!-- Modo vista -->
+          <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ categoria.nombre }}</h2>
+          <div class="flex justify-end mt-4 gap-2">
+            <button
+              class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              (click)="enableEditMode(categoria)">
+              Editar
+            </button>
+            <button
+              class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              (click)="eliminarCategoria(categoria.id)">
+              Eliminar
+            </button>
+          </div>
+        </div>
+  
+        <ng-template #editMode>
+          <!-- Formulario de Edición -->
+          <input
+            type="text"
+            [(ngModel)]="categoria.nombre"
+            placeholder="Nombre"
+            class="w-full p-2 border rounded mb-2"
+            required
+          />
+          <div class="flex justify-end mt-4 gap-2">
+            <button
+              class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              (click)="guardarEdicion(categoria)">
+              Guardar
+            </button>
+            <button
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+              (click)="cancelarEdicion(categoria)">
+              Cancelar
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  
+    <!-- Bloque noCategorias -->
+    <ng-template #noCategorias>
+      <p class="text-center text-gray-500 dark:text-gray-300">No hay temáticas disponibles.</p>
+    </ng-template>
+  </div>
+  

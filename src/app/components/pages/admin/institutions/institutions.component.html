@@ -9,7 +9,60 @@
         Agregar
       </button>
     </div>
-  
+    <div *ngIf="nuevaInstitucion" class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm mb-10">
+        <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Crear Nueva Institución</h2>
+        <input
+          type="text"
+          [(ngModel)]="nuevaInstitucion.nombre"
+          placeholder="Nombre de la institución"
+          class="w-full p-2 border rounded mb-2"
+          required
+        />
+        <input
+          type="text"
+          [(ngModel)]="nuevaInstitucion.ubicacion"
+          placeholder="Ubicación de la institución"
+          class="w-full p-2 border rounded mb-2"
+          required
+        />
+        <input
+          type="url"
+          [(ngModel)]="nuevaInstitucion.urlGeneralidades"
+          placeholder="URL de Generalidades"
+          class="w-full p-2 border rounded mb-2"
+        />
+        <input
+          type="url"
+          [(ngModel)]="nuevaInstitucion.urlOfertaAcademica"
+          placeholder="URL de Oferta Académica"
+          class="w-full p-2 border rounded mb-2"
+        />
+        <input
+          type="url"
+          [(ngModel)]="nuevaInstitucion.urlBienestar"
+          placeholder="URL de Bienestar"
+          class="w-full p-2 border rounded mb-2"
+        />
+        <input
+          type="url"
+          [(ngModel)]="nuevaInstitucion.urlAdmision"
+          placeholder="URL de Admisión"
+          class="w-full p-2 border rounded mb-2"
+        />
+        <div class="flex justify-end mt-4 gap-2">
+          <button
+            class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+            (click)="guardarNuevaInstitucion()">
+            Guardar
+          </button>
+          <button
+            class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+            (click)="cancelarCreacion()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+      
     <!-- Lista de Instituciones -->
     <div *ngIf="instituciones.length > 0; else noInstituciones" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
       <div
