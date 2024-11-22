@@ -81,7 +81,43 @@ export class HttpDataService {
       })
       .pipe(catchError(this.handleError));
   }
-  
+
+
+
+  //INSTITUCIONES
+
+  // Obtener todas las instituciones
+getInstituciones(): Observable<any[]> {
+  return this.http.get<any[]>(`${BASE_URL}/instituciones`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+// Crear una nueva institución
+crearInstitucion(datosNuevaInstitucion: any): Observable<any> {
+  return this.http.post<any>(
+    `${BASE_URL}/instituciones`,
+    datosNuevaInstitucion,
+    { headers: this.getHeaders() }
+  ).pipe(catchError(this.handleError));
+}
+
+// Actualizar una institución existente
+updateInstitucion(id: number, datosActualizados: any): Observable<any> {
+  return this.http.put<any>(
+    `${BASE_URL}/instituciones/${id}`,
+    datosActualizados,
+    { headers: this.getHeaders() }
+  ).pipe(catchError(this.handleError));
+}
+
+// Eliminar una institución
+deleteInstitucion(id: number): Observable<void> {
+  return this.http.delete<void>(
+    `${BASE_URL}/instituciones/${id}`,
+    { headers: this.getHeaders() }
+  ).pipe(catchError(this.handleError));
+}
+
   
 
 }
