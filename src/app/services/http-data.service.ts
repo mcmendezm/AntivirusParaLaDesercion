@@ -153,5 +153,30 @@ deleteCategoria(id: number): Observable<void> {
   ).pipe(catchError(this.handleError));
 }
 
+// Oportunidades
+
+// Métodos renombrados para manejar oportunidades
+
+obtenerOportunidades(): Observable<any[]> {
+  return this.http.get<any[]>(`${BASE_URL}/oportunidades`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+crearNuevaOportunidad(oportunidad: any): Observable<any> {
+  return this.http.post<any>(`${BASE_URL}/oportunidades`, oportunidad, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+eliminarOportunidadPorId(id: number): Observable<void> {
+  return this.http.delete<void>(`${BASE_URL}/oportunidades/${id}`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+// Método para actualizar una oportunidad existente
+actualizarOportunidad(id: number, oportunidad: any): Observable<any> {
+  return this.http.put<any>(`${BASE_URL}/oportunidades/${id}`, oportunidad, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
+
 
 }

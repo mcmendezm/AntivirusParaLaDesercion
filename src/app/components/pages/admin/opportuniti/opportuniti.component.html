@@ -1,1 +1,173 @@
-<p>opportuniti works!</p>
+<div class="p-4">
+    <!-- Botón Agregar -->
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-lg font-semibold text-gray-800 dark:text-white">Oportunidades</h1>
+      <button
+        class="px-4 py-2 bg-blue-500 text-white rounded-lg flex items-center hover:bg-blue-600"
+        (click)="abrirFormularioNuevaOportunidad()">
+        <img src="assets/images/plus.png" alt="Agregar" class="mr-2 h-4 w-4 noFilter" />
+        Agregar
+      </button>
+    </div>
+  
+    <!-- Formulario de Nueva Oportunidad -->
+    <div *ngIf="nuevaOportunidad" class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm mb-10">
+      <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Crear Nueva Oportunidad</h2>
+      <input
+        type="text"
+        [(ngModel)]="nuevaOportunidad.nombre"
+        placeholder="Nombre"
+        class="w-full p-2 border rounded mb-2"
+        required
+      />
+      <textarea
+        [(ngModel)]="nuevaOportunidad.descripcion"
+        placeholder="Descripción"
+        class="w-full p-2 border rounded mb-2"
+      ></textarea>
+      <input
+        type="text"
+        [(ngModel)]="nuevaOportunidad.requisitos"
+        placeholder="Requisitos"
+        class="w-full p-2 border rounded mb-2"
+      />
+      <input
+        type="text"
+        [(ngModel)]="nuevaOportunidad.encargado"
+        placeholder="Encargado"
+        class="w-full p-2 border rounded mb-2"
+      />
+      <input
+        type="text"
+        [(ngModel)]="nuevaOportunidad.modalidad"
+        placeholder="Modalidad"
+        class="w-full p-2 border rounded mb-2"
+      />
+      <!-- Dropdowns para Institución y Categoría -->
+      <select
+        [(ngModel)]="nuevaOportunidad.institucionId"
+        class="w-full p-2 border rounded mb-2"
+      >
+        <option *ngFor="let institucion of instituciones" [value]="institucion.id">
+          {{ institucion.nombre }}
+        </option>
+      </select>
+      <select
+        [(ngModel)]="nuevaOportunidad.categoriaId"
+        class="w-full p-2 border rounded mb-2"
+      >
+        <option *ngFor="let categoria of categorias" [value]="categoria.id">
+          {{ categoria.nombre }}
+        </option>
+      </select>
+      <div class="flex justify-end mt-4 gap-2">
+        <button
+          class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+          (click)="guardarNuevaOportunidad()">
+          Guardar
+        </button>
+        <button
+          class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+          (click)="cancelarCreacion()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  
+    <!-- Lista de Oportunidades -->
+    <div *ngIf="oportunidades.length > 0; else noOportunidades" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+      <div *ngFor="let oportunidad of oportunidades" class="p-4 border rounded-lg bg-white dark:bg-[#283446] dark:border-gray-700 shadow-sm">
+        <div *ngIf="!oportunidad.isEditing; else editMode">
+          <!-- Vista normal -->
+          <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ oportunidad.nombre }}</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Observaciones: {{ oportunidad.observaciones }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Tipo: {{ oportunidad.tipo }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Encargado: {{ oportunidad.encargado }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Modalidad: {{ oportunidad.modalidad }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Institución: {{ oportunidad.institucion?.nombre }}</p>
+          <p class="text-sm text-gray-500 dark:text-gray-300">Categoría: {{ oportunidad.categoria?.nombre }}</p>
+          <div class="flex justify-end mt-4 gap-2">
+            <button
+              class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              (click)="enableEditMode(oportunidad)">
+              Editar
+            </button>
+            <button
+              class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+              (click)="eliminarOportunidad(oportunidad.id)">
+              Eliminar
+            </button>
+          </div>
+        </div>
+  
+        <ng-template #editMode>
+          <!-- Formulario de Edición -->
+          <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Editar Oportunidad</h2>
+          <input
+            type="text"
+            [(ngModel)]="oportunidad.nombre"
+            placeholder="Nombre"
+            class="w-full p-2 border rounded mb-2"
+            required
+          />
+          <textarea
+            [(ngModel)]="oportunidad.descripcion"
+            placeholder="Descripción"
+            class="w-full p-2 border rounded mb-2"
+          ></textarea>
+          <input
+            type="text"
+            [(ngModel)]="oportunidad.requisitos"
+            placeholder="Requisitos"
+            class="w-full p-2 border rounded mb-2"
+          />
+          <input
+            type="text"
+            [(ngModel)]="oportunidad.encargado"
+            placeholder="Encargado"
+            class="w-full p-2 border rounded mb-2"
+          />
+          <input
+            type="text"
+            [(ngModel)]="oportunidad.modalidad"
+            placeholder="Modalidad"
+            class="w-full p-2 border rounded mb-2"
+          />
+          <!-- Dropdowns para Institución y Categoría -->
+          <select
+            [(ngModel)]="oportunidad.institucion.id"
+            class="w-full p-2 border rounded mb-2"
+          >
+            <option *ngFor="let institucion of instituciones" [value]="institucion.id">
+              {{ institucion.nombre }}
+            </option>
+          </select>
+          <select
+            [(ngModel)]="oportunidad.categoria.id"
+            class="w-full p-2 border rounded mb-2"
+          >
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{ categoria.nombre }}
+            </option>
+          </select>
+          <div class="flex justify-end mt-4 gap-2">
+            <button
+              class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              (click)="guardarEdicion(oportunidad)">
+              Guardar
+            </button>
+            <button
+              class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+              (click)="cancelarEdicion(oportunidad)">
+              Cancelar
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  
+    <ng-template #noOportunidades>
+      <p class="text-center text-gray-500 dark:text-gray-300">No hay oportunidades disponibles.</p>
+    </ng-template>
+  </div>
+  
