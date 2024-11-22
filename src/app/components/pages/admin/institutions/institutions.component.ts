@@ -68,27 +68,27 @@ export class InstitutionsComponent implements OnInit {
   abrirFormularioNuevaInstitucion(): void {
     this.nuevaInstitucion = {
       nombre: '',
-      direccion: '',
-      telefono: '',
+      ubicacion: '',
+      urlGeneralidades: '',
+      urlOfertaAcademica: '',
+      urlBienestar: '',
+      urlAdmision: ''
     };
   }
 
   guardarNuevaInstitucion(): void {
-    const payload = {
-      nombre: this.nuevaInstitucion.nombre,
-      direccion: this.nuevaInstitucion.direccion,
-      telefono: this.nuevaInstitucion.telefono,
-    };
-
-    this.dataService.crearInstitucion(payload).subscribe({
-      next: (institucionCreada) => {
-        this.instituciones.push({ ...institucionCreada, isEditing: false });
-        this.nuevaInstitucion = null; 
-      },
-      error: (err) => {
-        console.error('Error al crear la institución:', err);
-      },
-    });
+    if (this.nuevaInstitucion) {
+      this.dataService.crearInstitucion(this.nuevaInstitucion).subscribe({
+        next: (institucionCreada) => {
+          console.log('Institución creada:', institucionCreada);
+          this.instituciones.push(institucionCreada); 
+          this.nuevaInstitucion = null; 
+        },
+        error: (err) => {
+          console.error('Error al crear la institución:', err);
+        }
+      });
+    }
   }
 
   cancelarCreacion(): void {
