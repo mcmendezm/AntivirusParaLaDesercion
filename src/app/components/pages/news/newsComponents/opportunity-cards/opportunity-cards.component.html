@@ -6,16 +6,16 @@
   <div *ngIf="filteredOportunidades.length > 0; else noData" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
     <app-opportunity-card
       *ngFor="let oportunidad of filteredOportunidades"
-      [imageSrc]="'assets/images/' + getImageName(oportunidad.institucion.nombre)"
+      [imageSrc]="'assets/images/' + getImageName(oportunidad.institucion?.nombre || 'default')"
       [imageAlt]="oportunidad.nombre"
       [title]="oportunidad.nombre"
-      [description]="oportunidad.descripcion"
-      [modalidad]="oportunidad.modalidad"
-      [requisitos]="oportunidad.requisitos"
+      [description]="oportunidad.descripcion || 'Sin descripción disponible'"
+      [modalidad]="oportunidad.modalidad || 'No especificada'"
+      [requisitos]="oportunidad.requisitos || 'Sin requisitos especificados'"
       [tipo]="oportunidad.tipo"
-      [institucion]="oportunidad.institucion.nombre"
-      [ubicacion]="oportunidad.institucion.ubicacion"
-      [sector]="oportunidad.categoria.nombre">
+      [institucion]="oportunidad.institucion?.nombre || 'No asignada'"
+      [ubicacion]="oportunidad.institucion?.ubicacion || 'Ubicación no disponible'"
+      [sector]="oportunidad.categoria?.nombre || 'No asignado'">
     </app-opportunity-card>
   </div>
 

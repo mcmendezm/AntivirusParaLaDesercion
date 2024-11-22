@@ -71,16 +71,9 @@ export class OpportunitiComponent implements OnInit {
     const payload = { ...this.nuevaOportunidad };
   
     this.dataService.crearNuevaOportunidad(payload).subscribe((oportunidad) => {
-      // Asignar la institución y categoría asociadas después de guardar
-      oportunidad.institucion = this.instituciones.find(
-        (inst) => inst.id === Number(payload.institucionId)
-      ) || null;
-      oportunidad.categoria = this.categorias.find(
-        (cat) => cat.id === Number(payload.categoriaId)
-      ) || null;
-  
+      // Agregar la nueva oportunidad al arreglo con las relaciones completas
       this.oportunidades.push(oportunidad);
-      this.nuevaOportunidad = null;
+      this.nuevaOportunidad = null; // Limpiar el formulario
       console.log('Nueva oportunidad guardada:', oportunidad);
     });
   }
