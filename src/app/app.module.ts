@@ -38,6 +38,7 @@ import { BootcampsComponent } from './components/pages/admin/bootcamps/bootcamps
 import { SettingsComponent } from './components/pages/admin/settings/settings.component';
 import { UsersComponent } from './components/pages/admin/users/users.component';
 import { InstitutionsComponent } from './components/pages/admin/institutions/institutions.component';
+import { OpportunitiComponent } from './components/pages/admin/opportuniti/opportuniti.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { InstitutionsComponent } from './components/pages/admin/institutions/ins
     BootcampsComponent,
     SettingsComponent,
     UsersComponent,
-    InstitutionsComponent
+    InstitutionsComponent,
+    OpportunitiComponent
   ],
   imports: [
     BrowserModule,
