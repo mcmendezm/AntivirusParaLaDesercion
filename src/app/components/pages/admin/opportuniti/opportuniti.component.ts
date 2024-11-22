@@ -25,35 +25,28 @@ export class OpportunitiComponent implements OnInit {
   }
 
   cargarOportunidades(): void {
-    this.dataService.obtenerOportunidades().subscribe({
-      next: (data) => {
-        this.oportunidades = data;
-      },
-      error: (error: any) => {
-        console.error('Error al cargar oportunidades:', error);
-      }
+    this.dataService.obtenerOportunidades().subscribe((data) => {
+      console.log('Oportunidades recibidas:', data);
+      // Aseguramos que institución y categoría sean opcionales
+      this.oportunidades = data.map((oportunidad) => ({
+        ...oportunidad,
+        institucion: oportunidad.institucion || null,
+        categoria: oportunidad.categoria || null,
+      }));
     });
   }
 
   cargarInstituciones(): void {
-    this.dataService.getInstituciones().subscribe({
-      next: (data) => {
-        this.instituciones = data;
-      },
-      error: (error: any) => {
-        console.error('Error al cargar instituciones:', error);
-      }
+    this.dataService.getInstituciones().subscribe((data) => {
+      console.log('Instituciones recibidas:', data);
+      this.instituciones = data;
     });
   }
 
   cargarCategorias(): void {
-    this.dataService.getCategorias().subscribe({
-      next: (data) => {
-        this.categorias = data;
-      },
-      error: (error: any) => {
-        console.error('Error al cargar categorías:', error);
-      }
+    this.dataService.getCategorias().subscribe((data) => {
+      console.log('Categorías recibidas:', data);
+      this.categorias = data;
     });
   }
 
@@ -62,37 +55,36 @@ export class OpportunitiComponent implements OnInit {
       nombre: '',
       observaciones: '',
       tipo: '',
-      descripcion: '',
-      requisitos: '',
-      guia: '',
-      datosAdicionales: '',
-      canalesAtencion: '',
       encargado: '',
       modalidad: '',
       institucionId: null,
-      categoriaId: null
+      categoriaId: null,
     };
   }
 
   guardarNuevaOportunidad(): void {
-    if (this.nuevaOportunidad) {
-      const payload = {
-        ...this.nuevaOportunidad,
-        institucionId: this.nuevaOportunidad.institucionId,
-        categoriaId: this.nuevaOportunidad.categoriaId
-      };
-
-      this.dataService.crearNuevaOportunidad(payload).subscribe({
-        next: (oportunidad) => {
-          this.oportunidades.push(oportunidad);
-          this.nuevaOportunidad = null;
-        },
-        error: (error: any) => {
-          console.error('Error al crear nueva oportunidad:', error);
-        }
-      });
+    if (!this.nuevaOportunidad.institucionId || !this.nuevaOportunidad.categoriaId) {
+      console.error('Faltan datos requeridos: institución o categoría');
+      return;
     }
+  
+    const payload = { ...this.nuevaOportunidad };
+  
+    this.dataService.crearNuevaOportunidad(payload).subscribe((oportunidad) => {
+      // Asignar la institución y categoría asociadas después de guardar
+      oportunidad.institucion = this.instituciones.find(
+        (inst) => inst.id === Number(payload.institucionId)
+      ) || null;
+      oportunidad.categoria = this.categorias.find(
+        (cat) => cat.id === Number(payload.categoriaId)
+      ) || null;
+  
+      this.oportunidades.push(oportunidad);
+      this.nuevaOportunidad = null;
+      console.log('Nueva oportunidad guardada:', oportunidad);
+    });
   }
+  
 
   cancelarCreacion(): void {
     this.nuevaOportunidad = null;
@@ -101,16 +93,19 @@ export class OpportunitiComponent implements OnInit {
   eliminarOportunidad(id: number): void {
     this.dataService.eliminarOportunidadPorId(id).subscribe({
       next: () => {
-        this.oportunidades = this.oportunidades.filter(o => o.id !== id);
+        this.oportunidades = this.oportunidades.filter((o) => o.id !== id);
+        console.log(`Oportunidad con id ${id} eliminada.`);
       },
       error: (error: any) => {
         console.error('Error al eliminar oportunidad:', error);
-      }
+      },
     });
   }
 
   enableEditMode(oportunidad: any): void {
     oportunidad.isEditing = true;
+    oportunidad.institucionId = oportunidad.institucion?.id || null;
+    oportunidad.categoriaId = oportunidad.categoria?.id || null;
   }
 
   cancelarEdicion(oportunidad: any): void {
@@ -118,24 +113,35 @@ export class OpportunitiComponent implements OnInit {
   }
 
   guardarEdicion(oportunidad: any): void {
+    if (!oportunidad.institucionId || !oportunidad.categoriaId) {
+      console.error('Faltan datos requeridos: institución o categoría');
+      return;
+    }
+  
     const payload = {
       ...oportunidad,
-      institucionId: oportunidad.institucion.id,
-      categoriaId: oportunidad.categoria.id,
+      institucionId: Number(oportunidad.institucionId),
+      categoriaId: Number(oportunidad.categoriaId),
     };
-
+  
     this.dataService.actualizarOportunidad(oportunidad.id, payload).subscribe({
       next: () => {
-        oportunidad.institucion = this.instituciones.find(inst => inst.id === payload.institucionId) || oportunidad.institucion;
-        oportunidad.categoria = this.categorias.find(cat => cat.id === payload.categoriaId) || oportunidad.categoria;
-
+        // Actualizar las relaciones en el frontend
+        oportunidad.institucion = this.instituciones.find(
+          (inst) => inst.id === payload.institucionId
+        ) || null;
+        oportunidad.categoria = this.categorias.find(
+          (cat) => cat.id === payload.categoriaId
+        ) || null;
+  
         oportunidad.isEditing = false;
         this.cdr.detectChanges();
-        this.cargarOportunidades()
+        console.log(`Oportunidad con id ${oportunidad.id} actualizada.`);
       },
       error: (error: any) => {
         console.error('Error al guardar la oportunidad:', error);
-      }
+      },
     });
   }
+  
 }
