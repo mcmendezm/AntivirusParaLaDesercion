@@ -57,8 +57,8 @@ export class OpportunitiComponent implements OnInit {
       tipo: '',
       encargado: '',
       modalidad: '',
-      institucionId: null,
-      categoriaId: null,
+      institucionId: '',
+      categoriaId: '',
     };
   }
 
@@ -68,15 +68,50 @@ export class OpportunitiComponent implements OnInit {
       return;
     }
   
-    const payload = { ...this.nuevaOportunidad };
+    const payload = { 
+      ...this.nuevaOportunidad,
+      institucionId: Number(this.nuevaOportunidad.institucionId),
+      categoriaId: Number(this.nuevaOportunidad.categoriaId),
+    };
   
-    this.dataService.crearNuevaOportunidad(payload).subscribe((oportunidad) => {
-      // Agregar la nueva oportunidad al arreglo con las relaciones completas
-      this.oportunidades.push(oportunidad);
-      this.nuevaOportunidad = null; // Limpiar el formulario
-      console.log('Nueva oportunidad guardada:', oportunidad);
+    console.log('form nueva oportunidad (antes de sobrescribir):', payload);
+  
+    // Obtener institución
+    this.dataService.getInstitucionPorId(payload.institucionId).subscribe({
+      next: (institucion) => {
+        // Sobrescribir el campo institucionId con el objeto completo
+        payload.institucion = institucion;
+  
+        // Obtener categoría
+        this.dataService.getCategoriaPorId(payload.categoriaId).subscribe({
+          next: (categoria) => {
+            // Sobrescribir el campo categoriaId con el objeto completo
+            payload.categoria = categoria;
+  
+            // Crear la nueva oportunidad con los datos actualizados
+            this.dataService.crearNuevaOportunidad(payload).subscribe({
+              next: () => {
+                // Agregar la nueva oportunidad al arreglo local
+                this.oportunidades.push(payload);
+                this.nuevaOportunidad = null; // Limpiar el formulario
+                console.log('Crear Nueva oportunidad guardada:', payload);
+              },
+              error: (error) => {
+                console.error('Error al guardar la nueva oportunidad:', error);
+              },
+            });
+          },
+          error: (error) => {
+            console.error('Error al obtener la categoría:', error);
+          },
+        });
+      },
+      error: (error) => {
+        console.error('Error al obtener la institución:', error);
+      },
     });
   }
+  
   
 
   cancelarCreacion(): void {

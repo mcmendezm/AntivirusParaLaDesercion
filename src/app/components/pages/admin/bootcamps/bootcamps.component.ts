@@ -48,18 +48,35 @@ export class BootcampsComponent implements OnInit {
       console.error('Falta asignar una institución');
       return;
     }
-
+  
     const payload = { ...this.nuevoBootcamp };
-
-    this.dataService.crearBootcamp(payload).subscribe((bootcamp) => {
-      bootcamp.institucion = this.instituciones.find(
-        inst => inst.id === Number(payload.institucionId)
-      ) || { nombre: 'No asignada' };
-
-      this.bootcamps.push(bootcamp);
-      this.nuevoBootcamp = null; // Limpia el formulario
+  
+    // Obtener la institución antes de enviar el bootcamp
+    this.dataService.getInstitucionPorId(Number(payload.institucionId)).subscribe({
+      next: (institucion) => {
+        // Sobrescribir institucionId con el objeto completo
+        payload.institucion = institucion;
+  
+        // Crear el bootcamp con la institución completa
+        this.dataService.crearBootcamp(payload).subscribe({
+          next: (bootcamp) => {
+            // Agregar el bootcamp al arreglo
+            bootcamp.institucion = institucion; // Asociar la institución completa
+            this.bootcamps.push(bootcamp);
+            this.nuevoBootcamp = null; // Limpia el formulario
+            console.log('Bootcamp creado con éxito:', bootcamp);
+          },
+          error: (error) => {
+            console.error('Error al guardar el bootcamp:', error);
+          },
+        });
+      },
+      error: (error) => {
+        console.error('Error al obtener la institución:', error);
+      },
     });
   }
+  
 
   eliminarBootcamp(id: number): void {
     this.dataService.eliminarBootcamp(id).subscribe(() => {
