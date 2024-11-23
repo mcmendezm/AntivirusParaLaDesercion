@@ -92,6 +92,12 @@ getInstituciones(): Observable<any[]> {
     .pipe(catchError(this.handleError));
 }
 
+  // Obtener institucion po rid
+getInstitucionPorId(id: number): Observable<any> {
+  return this.http.get<any>(`${BASE_URL}/instituciones/${id}`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
 // Crear una nueva institución
 crearInstitucion(datosNuevaInstitucion: any): Observable<any> {
   return this.http.post<any>(
@@ -126,6 +132,13 @@ getCategorias(): Observable<any[]> {
   return this.http.get<any[]>(`${BASE_URL}/categorias`, { headers: this.getHeaders() })
     .pipe(catchError(this.handleError));
 }
+
+// Obtener categorias por id
+getCategoriaPorId(id: number): Observable<any> {
+  return this.http.get<any>(`${BASE_URL}/categorias/${id}`, { headers: this.getHeaders() })
+    .pipe(catchError(this.handleError));
+}
+
 
 // Crear una nueva categoría
 crearCategoria(categoria: any): Observable<any> {
@@ -204,17 +217,5 @@ eliminarBootcamp(id: number): Observable<void> {
     .pipe(catchError(this.handleError));
 }
 
-//CONFIGURACIONES
-// Obtener usuario por ID
-getUsuarioPorId(id: number): Observable<any> {
-  return this.http.get<any>(`${BASE_URL}/usuarios/${id}`, { headers: this.getHeaders() })
-    .pipe(catchError(this.handleError));
-}
-
-// Actualizar usuario
-actualizarUsuario(id: number, datos: any): Observable<any> {
-  return this.http.put<any>(`${BASE_URL}/usuarios/${id}`, datos, { headers: this.getHeaders() })
-    .pipe(catchError(this.handleError));
-}
 
 }
