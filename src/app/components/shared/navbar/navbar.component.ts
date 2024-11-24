@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,19 +11,37 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
   currentLanguage: string;
+  isAdminUser: boolean = false; // Declarar la propiedad aquí
 
-  constructor(private translocoService: TranslocoService, private router: Router) {
+  constructor(private translocoService: TranslocoService, private router: Router, private authService: AuthService) {
     this.currentLanguage = this.translocoService.getActiveLang() === 'es' ? 'ESP' : 'ENG';
+
+    this.checkAdminStatus();
+  }
+  // Método para usar directamente en el template
+  isAdmin(): boolean {
+    return this.isAdminUser;
   }
 
   // Verificar si el usuario está autenticado
   isLoggedIn(): boolean {
     return !!localStorage.getItem('jwtToken');
+
   }
+
+  // Verificar si el usuario es admin
+  async checkAdminStatus(): Promise<void> {
+    if (this.isLoggedIn()) {
+      this.isAdminUser = await this.authService.validateAdminRole();
+    }
+  }
+
+
 
   // Cerrar sesión
   logout(): void {
     localStorage.removeItem('jwtToken');
+    this.isAdminUser = false; // Limpiar el estado de admin
     this.router.navigate(['/']);  // Redirige al usuario a la página principal
   }
 

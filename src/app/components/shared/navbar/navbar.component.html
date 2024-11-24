@@ -10,7 +10,7 @@
       <ng-container *ngIf="isLoggedIn();">
         <li><a routerLink="/news" routerLinkActive="active-link" class="nav-link">{{ 'navbar.news' | transloco }}</a></li>
       </ng-container>
-      <ng-container *ngIf="isLoggedIn();">
+      <ng-container *ngIf="isAdmin();">
         <li><a routerLink="/admin" routerLinkActive="active-link" class="nav-link">{{ 'navbar.admi' | transloco }}</a></li>
       </ng-container>
     </ul>
