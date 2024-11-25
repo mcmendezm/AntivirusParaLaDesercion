@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthSocialMediaService } from '../../auth-social-media.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-social-login',
@@ -8,13 +9,15 @@ import { AuthSocialMediaService } from '../../auth-social-media.service';
 })
 export class SocialLoginComponent {
   constructor(
-    private authSocialMediaService: AuthSocialMediaService
+    private authSocialMediaService: AuthSocialMediaService,
+    private readonly router: Router
 ){}
 signInWithGoogle() {
   this.authSocialMediaService
     .signInWithGoogle()
     .then((result) => {
       console.log('User signed in:', result.user);
+      this.router.navigate(["/news"])
     })
     .catch((error) => {
       console.error('Error signing in with Google:', error);
