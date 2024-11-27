@@ -217,12 +217,12 @@ eliminarBootcamp(id: number): Observable<void> {
     .pipe(catchError(this.handleError));
 }
 
-
+//Método para obtener el rol del usuario
 getUserRole(): Observable<{ role: string; username: string }> {
   return this.http.get<{ role: string; username: string }>(`${BASE_URL}/usuarios/role`, {
-    headers: this.getHeaders(), // Solo el token se envía en los headers
+    headers: this.getHeaders(), 
   }).pipe(
-    catchError(this.handleError) // Manejo de errores
+    catchError(this.handleError) 
   );
 }
 
